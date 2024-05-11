@@ -21,7 +21,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="720" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -115,7 +115,7 @@
                           <Component id="jLabel15" pref="30" max="32767" attributes="0"/>
                           <Component id="keteranganBarang" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="134" max="32767" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="simpanPemasok4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="editPemasok3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -290,7 +290,7 @@
                           <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
                           <Component id="keteranganKategori" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="182" max="32767" attributes="0"/>
+                      <EmptySpace pref="180" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="simpanPemasok3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="editPemasok2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -455,7 +455,7 @@
                           <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
                           <Component id="keteranganGudang" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="134" max="32767" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="simpanPemasok2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="editPemasok1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -627,7 +627,7 @@
                           <Component id="jLabel4" pref="30" max="32767" attributes="0"/>
                           <Component id="keteranganPemasok" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="134" max="32767" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="simpanPemasok" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="editPemasok" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
