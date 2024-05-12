@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class DataTransaksiPanel extends javax.swing.JPanel {
     
     private static List<String> pemasokList = new ArrayList<>();
+    private static List<String> gudangList = new ArrayList<>();
     private static List<String> kdBarangList = new ArrayList<>();
     private static List<String> nmBarangList = new ArrayList<>();
     private static Barang barang;
@@ -52,7 +53,7 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
         loadBarangMasuk();
         loadDetailBarangMasuk( null );
         loadPemasok();
-        loadBarang();
+        loadBarangDBM();
     }
 
     /**
@@ -696,13 +697,13 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
                 loadBarangMasuk();
                 loadDetailBarangMasuk( null );
                 loadPemasok();
-                loadBarang();
+                loadBarangDBM();
                 break;
             case 1:
                 loadBarangKeluar();
                 loadDetailBarangKeluar( null );
-                loadPemasok();
-                loadBarang();
+                loadGudang();
+                loadBarangDBK();
                 break;
         }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
@@ -792,43 +793,83 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_detailBarangMasukTableMousePressed
 
     private void detailBarangKeluarTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBarangKeluarTableMousePressed
-        // TODO add your handling code here:
+        String kode_part = (String) detailBarangKeluarTable.getValueAt(detailBarangKeluarTable.getSelectedRow(), 1);                    
+        int jumlah_part = (int) detailBarangKeluarTable.getValueAt(detailBarangKeluarTable.getSelectedRow(), 5);                 
+        String keterangan_part = (String) detailBarangKeluarTable.getValueAt(detailBarangKeluarTable.getSelectedRow(), 7);             
+        String nm_barang_part = (String) detailBarangKeluarTable.getValueAt(detailBarangKeluarTable.getSelectedRow(), 4); 
+        kodeDBK.setText( kode_part );
+        keteranganDBK.setText(keterangan_part);
+        jumlahDBK.setValue(jumlah_part);
+        for (int i=0; i<barangDBK.getItemCount(); i++) {
+            if (barangDBK.getModel().getElementAt(i).contains(nm_barang_part)) {
+                barangDBK.setSelectedIndex(i);
+            }
+        }
+        kodeDBK.setEnabled( false );
     }//GEN-LAST:event_detailBarangKeluarTableMousePressed
 
     private void barangKeluarTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barangKeluarTableMousePressed
-        // TODO add your handling code here:
+        String kode_part = (String) barangKeluarTable.getValueAt(barangKeluarTable.getSelectedRow(), 1);               
+        String gudang_part = (String) barangKeluarTable.getValueAt(barangKeluarTable.getSelectedRow(), 2);                    
+        String keterangan_part = (String) barangKeluarTable.getValueAt(barangKeluarTable.getSelectedRow(), 4);
+        kodeBK.setText( kode_part );
+        keteranganBK.setText(keterangan_part);
+        for (int i=0; i<jComboBox3.getItemCount(); i++) {
+            if (jComboBox3.getModel().getElementAt(i).contains(gudang_part)) {
+                jComboBox3.setSelectedIndex(i);
+            }
+        }
+        kodeBK.setEnabled( false );
+        loadDetailBarangKeluar( kode_part );
     }//GEN-LAST:event_barangKeluarTableMousePressed
 
     private void simpanPemasok3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanPemasok3ActionPerformed
-        // TODO add your handling code here:
+        barangKeluar.create(kodeBK.getText(), gudangList.get(jComboBox3.getSelectedIndex()), keteranganBK.getText());
+        clearBKForm();
+        loadBarangKeluar();
     }//GEN-LAST:event_simpanPemasok3ActionPerformed
 
     private void editPemasok6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPemasok6ActionPerformed
-        // TODO add your handling code here:
+        barangKeluar.update(kodeBK.getText(), gudangList.get(jComboBox3.getSelectedIndex()), keteranganBK.getText());
+        clearBKForm();
+        loadBarangKeluar();
     }//GEN-LAST:event_editPemasok6ActionPerformed
 
     private void hapusPemasok8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPemasok8ActionPerformed
-        // TODO add your handling code here:
+        barangKeluar.delete(kodeBK.getText());
+        clearBKForm();
+        loadBarangKeluar();
     }//GEN-LAST:event_hapusPemasok8ActionPerformed
 
     private void hapusPemasok9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPemasok9ActionPerformed
-        // TODO add your handling code here:
+        clearBKForm();
+        kodeBK.setEnabled( true );
+        loadDetailBarangKeluar( null );
     }//GEN-LAST:event_hapusPemasok9ActionPerformed
 
     private void simpanPemasok4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanPemasok4ActionPerformed
-        // TODO add your handling code here:
+        String gudang_part = gudangList.get(jComboBox3.getSelectedIndex());
+        String kode_barang_part = kdBarangList.get(barangDBK.getSelectedIndex());
+        String nama_barang_part = nmBarangList.get(barangDBK.getSelectedIndex());
+        barangKeluar.createDetail(kodeDBK.getText(), kodeBK.getText(), gudang_part, kode_barang_part, nama_barang_part,(int) jumlahDBK.getValue(), keteranganDBK.getText());
+        loadDetailBarangKeluar(kodeBK.getText());
     }//GEN-LAST:event_simpanPemasok4ActionPerformed
 
     private void editPemasok7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPemasok7ActionPerformed
-        // TODO add your handling code here:
+        String kode_barang_part = kdBarangList.get(barangDBK.getSelectedIndex());
+        String nama_barang_part = nmBarangList.get(barangDBK.getSelectedIndex());
+        barangKeluar.updateDetail(kodeDBK.getText(), kode_barang_part, nama_barang_part, (int) jumlahDBK.getValue(), keteranganDBK.getText());
+        loadDetailBarangKeluar(kodeBK.getText().isBlank() ? null : kodeBK.getText() );
     }//GEN-LAST:event_editPemasok7ActionPerformed
 
     private void hapusPemasok10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPemasok10ActionPerformed
-        // TODO add your handling code here:
+        barangKeluar.deleteDetail(kodeDBK.getText());
+        loadDetailBarangKeluar(kodeBK.getText().isBlank() ? null : kodeBK.getText() );
     }//GEN-LAST:event_hapusPemasok10ActionPerformed
 
     private void hapusPemasok11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPemasok11ActionPerformed
-        // TODO add your handling code here:
+        clearDBKForm();
+        kodeDBK.setEnabled( true );
     }//GEN-LAST:event_hapusPemasok11ActionPerformed
 
     private void kodeDBKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeDBKActionPerformed
@@ -980,7 +1021,7 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
         }
     }
     
-    private void loadBarang() {
+    private void loadBarangDBM() {
         String[] body = { };
         DefaultComboBoxModel model = new DefaultComboBoxModel<>( body );
         barangDBM.setModel( model );
@@ -1067,45 +1108,45 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
         }
     }
     
-//    private void loadPemasok() {
-//        String[] body = { };
-//        DefaultComboBoxModel model = new DefaultComboBoxModel<>( body );
-//        jComboBox2.setModel( model );
-//        
-//        ResultSet data = pemasok.fetchAll();
-//        try {
-//            pemasokList.clear();
-//            while (data.next()){
-//                String kode_part = data.getString("kode_supplier");
-//                String nama_part = data.getString("nama_supplier");
-//                String formatted = "["+ kode_part +"] "+ nama_part;
-//                pemasokList.add(nama_part);
-//                model.addElement( formatted );
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataMasterPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    private void loadGudang() {
+        String[] body = { };
+        DefaultComboBoxModel model = new DefaultComboBoxModel<>( body );
+        jComboBox3.setModel( model );
+        
+        ResultSet data = gudang.fetchAll();
+        try {
+            gudangList.clear();
+            while (data.next()){
+                String kode_part = data.getString("kode_gudang");
+                String nama_part = data.getString("nama_gudang");
+                String formatted = "["+ kode_part +"] "+ nama_part;
+                gudangList.add(nama_part);
+                model.addElement( formatted );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataMasterPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
-//    private void loadBarang() {
-//        String[] body = { };
-//        DefaultComboBoxModel model = new DefaultComboBoxModel<>( body );
-//        barangDBM.setModel( model );
-//        
-//        ResultSet data = barang.fetchAll();
-//        try {
-//            kdBarangList.clear();
-//            nmBarangList.clear();
-//            while (data.next()){
-//                String kode_part = data.getString("kode_part");
-//                String nama_part = data.getString("nama_part");
-//                String formatted = "["+ kode_part +"] "+ nama_part;
-//                kdBarangList.add(kode_part);
-//                nmBarangList.add(nama_part);
-//                model.addElement( formatted );
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataMasterPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    private void loadBarangDBK() {
+        String[] body = { };
+        DefaultComboBoxModel model = new DefaultComboBoxModel<>( body );
+        barangDBK.setModel( model );
+        
+        ResultSet data = barang.fetchAll();
+        try {
+            kdBarangList.clear();
+            nmBarangList.clear();
+            while (data.next()){
+                String kode_part = data.getString("kode_part");
+                String nama_part = data.getString("nama_part");
+                String formatted = "["+ kode_part +"] "+ nama_part;
+                kdBarangList.add(kode_part);
+                nmBarangList.add(nama_part);
+                model.addElement( formatted );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataMasterPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -68,7 +68,7 @@ public class BarangKeluar {
         
         try {
             java.sql.Statement stmt = conn.createStatement();
-            result = stmt.executeUpdate("INSERT INTO `tb_brg_keluar`(`tanggal`, `id_bk`, `supplier`, `keterangan`) "
+            result = stmt.executeUpdate("INSERT INTO `tb_brg_keluar`(`tanggal`, `id_bk`, `gudang`, `keterangan`) "
                     + "VALUES ('"+ date.toString() +"','"+ kode +"','"+ pemasok +"','"+ keterangan +"')");
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +86,7 @@ public class BarangKeluar {
         
         try {
             java.sql.Statement stmt = conn.createStatement();
-            result = stmt.executeUpdate("INSERT INTO `tb_detail_brg_keluar`(`tanggal`, `id_detail_bk`, `id_bk`, `supplier`, `kode_part`, `nama_part`, `jumlah`, `keterangan`) "
+            result = stmt.executeUpdate("INSERT INTO `tb_detail_brg_keluar`(`tanggal`, `id_detail_bk`, `id_bk`, `gudang`, `kode_part`, `nama_part`, `jumlah`, `keterangan`) "
                     + "VALUES ('"+ date.toString() +"','"+ kode +"','"+ kodeBM +"','"+ pemasok +"','"+ kodeBarang +"','"+ namaBarang +"',"+ jumlah +",'"+ keterangan +"')");  
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,7 +102,7 @@ public class BarangKeluar {
         try {
             java.sql.Statement stmt = conn.createStatement();
             result = stmt.executeUpdate("UPDATE `tb_brg_keluar` SET "
-                    + "`supplier`='"+ pemasok +"',"
+                    + "`gudang`='"+ pemasok +"',"
                     + "`keterangan`='"+ keterangan +"' "
                     + "WHERE `id_bk`='"+ kode +"'");
         } catch (SQLException ex) {
