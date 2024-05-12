@@ -8,6 +8,7 @@ com\unindra\inventory\view\DataTransaksiPanel$10.class
 com\unindra\inventory\view\LaporanPanel$5.class
 com\unindra\inventory\view\DataMasterPanel$16.class
 com\unindra\inventory\view\DataTransaksiPanel.class
+com\unindra\inventory\view\LaporanPanel$9.class
 com\unindra\inventory\view\LaporanPanel$2.class
 com\unindra\inventory\view\DataMasterPanel.class
 com\unindra\inventory\view\DataMasterPanel$7.class
@@ -16,6 +17,7 @@ com\unindra\inventory\view\DataTransaksiPanel$6.class
 com\unindra\inventory\view\LaporanPanel$6.class
 com\unindra\inventory\view\DataTransaksiPanel$14.class
 com\unindra\inventory\view\DataTransaksiPanel$9.class
+com\unindra\inventory\view\LaporanPanel$11.class
 com\unindra\inventory\db\Barang.class
 com\unindra\inventory\view\DataMasterPanel$9.class
 com\unindra\inventory\view\LaporanPanel.class
@@ -34,6 +36,7 @@ com\unindra\inventory\view\DataMasterPanel$18.class
 com\unindra\inventory\view\DataMasterPanel$3.class
 com\unindra\inventory\view\DataTransaksiPanel$22.class
 com\unindra\inventory\db\Db.class
+com\unindra\inventory\view\LaporanPanel$10.class
 com\unindra\inventory\view\DataMasterPanel$8.class
 com\unindra\inventory\db\Pemasok.class
 com\unindra\inventory\Inventory.class
@@ -69,4 +72,5 @@ com\unindra\inventory\db\Kategori.class
 com\unindra\inventory\view\DataMasterPanel$5.class
 com\unindra\inventory\view\DataTransaksiPanel$20.class
 com\unindra\inventory\view\DataTransaksiPanel$7.class
+com\unindra\inventory\view\LaporanPanel$8.class
 com\unindra\inventory\view\DataTransaksiPanel$12.class
