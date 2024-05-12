@@ -4,6 +4,7 @@ com\unindra\inventory\view\DataTransaksiPanel$13.class
 com\unindra\inventory\view\DataTransaksiPanel$23.class
 com\unindra\inventory\view\DataMasterPanel$12.class
 com\unindra\inventory\view\DataMasterPanel$6.class
+com\unindra\inventory\view\LaporanPanel$12.class
 com\unindra\inventory\view\DataTransaksiPanel$10.class
 com\unindra\inventory\view\LaporanPanel$5.class
 com\unindra\inventory\view\DataMasterPanel$16.class
@@ -72,6 +73,7 @@ com\unindra\inventory\view\DataMasterPanel$10.class
 com\unindra\inventory\db\Kategori.class
 com\unindra\inventory\view\DataMasterPanel$5.class
 com\unindra\inventory\view\DataTransaksiPanel$20.class
+com\unindra\inventory\view\LaporanPanel$13.class
 com\unindra\inventory\view\DataTransaksiPanel$7.class
 com\unindra\inventory\view\LaporanPanel$8.class
 com\unindra\inventory\view\DataTransaksiPanel$12.class

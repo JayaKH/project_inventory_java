@@ -49,7 +49,7 @@ public class LaporanPanel extends javax.swing.JPanel {
         barangKeluar = new BarangKeluar();
         
         conn = Db.getInstance().conn;
-        loadBarang();
+        loadBarang(null);
     }
 
     /** This method is called from within the constructor to
@@ -67,6 +67,8 @@ public class LaporanPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,6 +78,8 @@ public class LaporanPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -131,12 +135,23 @@ public class LaporanPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Grouping");
 
+        jButton6.setText("TAMPILKAN");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,7 +166,9 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -241,12 +258,23 @@ public class LaporanPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Grouping");
 
+        jButton7.setText("TAMPILKAN");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,7 +289,10 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -686,7 +717,7 @@ public class LaporanPanel extends javax.swing.JPanel {
             Map<String, Object> parameters = new HashMap<String, Object>();
             List<String> kodeList = new ArrayList<>();
             for (int i=0; i<tabelBarang.getRowCount(); i++) {
-                if (!((boolean) tabelBarang.getValueAt(i, 0))){
+                if ((boolean) tabelBarang.getValueAt(i, 0)){
                     kodeList.add((String) tabelBarang.getValueAt(i, 2));
                 }
             }
@@ -694,7 +725,7 @@ public class LaporanPanel extends javax.swing.JPanel {
             if (kodeList.isEmpty()) {
                 parameters.put("whereClause", "true" + groupQuery);
             } else {
-                StringBuilder whereQuery = new StringBuilder("kode_part NOT IN ( ");
+                StringBuilder whereQuery = new StringBuilder("kode_part IN ( ");
                 for (int i=0; i<kodeList.size(); i++) {
                     if (i > 0){ whereQuery.append(","); }
                     whereQuery.append("'"+ kodeList.get(i) +"'");
@@ -763,7 +794,7 @@ public class LaporanPanel extends javax.swing.JPanel {
     private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MousePressed
         switch (jTabbedPane1.getSelectedIndex()) {
             case 0:
-                loadBarang();
+                loadBarang(null);
                 break;
             case 1:
                 loadBM();
@@ -918,6 +949,14 @@ public class LaporanPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        loadBarang(jTextField1.getText());
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        loadBM();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> groupBK;
@@ -928,6 +967,8 @@ public class LaporanPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -961,6 +1002,8 @@ public class LaporanPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tabelBK;
     private javax.swing.JTable tabelBM;
     private javax.swing.JTable tabelBarang;
@@ -968,11 +1011,16 @@ public class LaporanPanel extends javax.swing.JPanel {
     private javax.swing.JTable tabelDBM;
     // End of variables declaration//GEN-END:variables
 
-    private void loadBarang() {
+    private void loadBarang( String kode ) {
         DefaultTableModel model = (DefaultTableModel) tabelBarang.getModel();
         
         try {
-            ResultSet data = barang.fetchAll();
+            ResultSet data;
+            if ( kode != null ) {
+                data = barang.fetchByKode(kode);
+            } else {
+                data = barang.fetchAll();
+            }
             model.setRowCount(0);
             int i = 0;
             while (data.next()){
@@ -995,7 +1043,7 @@ public class LaporanPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tabelBM.getModel();
         
         try {
-            ResultSet data = barangMasuk.fetchAll();
+            ResultSet data = barangMasuk.fetchByKode(jTextField2.getText());
             model.setRowCount(0);
             int i = 0;
             while (data.next()){

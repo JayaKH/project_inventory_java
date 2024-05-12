@@ -31,6 +31,20 @@ public class Barang {
         return result;
     }
     
+    public ResultSet fetchByKode(String kode) {
+        Connection conn = Db.getInstance().conn;
+        ResultSet result = null;
+        
+        try {
+            java.sql.Statement stmt = conn.createStatement();
+            result = stmt.executeQuery ("SELECT * FROM tb_barang WHERE `kode_part` LIKE '%"+ kode +"%'");
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
     public boolean create(String kode, String nama, String kategori, String keterangan) {
         java.util.Date now = new java.util.Date();
         Date date = new Date(now.getTime());

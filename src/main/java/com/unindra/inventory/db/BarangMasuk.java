@@ -31,6 +31,20 @@ public class BarangMasuk {
         return result;
     }
     
+    public ResultSet fetchByKode(String kode) {
+        Connection conn = Db.getInstance().conn;
+        ResultSet result = null;
+        
+        try {
+            java.sql.Statement stmt = conn.createStatement();
+            result = stmt.executeQuery ("SELECT * FROM tb_brg_masuk WHERE `id_bm` LIKE '%"+ kode +"%'");
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
     public ResultSet fetchDetailAll() {
         Connection conn = Db.getInstance().conn;
         ResultSet result = null;
@@ -53,6 +67,21 @@ public class BarangMasuk {
             java.sql.Statement stmt = conn.createStatement();
             result = stmt.executeQuery ("SELECT * FROM tb_detail_brg_masuk "
                     + "WHERE `id_bm`='"+ kode +"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
+    
+    public ResultSet fetchDetailByKode(String kode) {
+        Connection conn = Db.getInstance().conn;
+        ResultSet result = null;
+        
+        try {
+            java.sql.Statement stmt = conn.createStatement();
+            result = stmt.executeQuery ("SELECT * FROM tb_detail_brg_masuk WHERE `id_detail_bm` LIKE '%"+ kode +"%'");
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
