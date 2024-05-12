@@ -6,6 +6,8 @@
 package com.unindra.inventory.view;
 
 import com.unindra.inventory.db.Barang;
+import com.unindra.inventory.db.BarangKeluar;
+import com.unindra.inventory.db.BarangMasuk;
 import com.unindra.inventory.db.Db;
 import java.io.File;
 import java.sql.Connection;
@@ -35,12 +37,16 @@ public class LaporanPanel extends javax.swing.JPanel {
     
     private Connection conn;
     private static Barang barang;
+    private static BarangMasuk barangMasuk;
+    private static BarangKeluar barangKeluar;
 
     /** Creates new form LaporanPanel */
     public LaporanPanel() {
         initComponents();
         
-        barang   = new Barang();
+        barang       = new Barang();
+        barangMasuk  = new BarangMasuk();
+        barangKeluar = new BarangKeluar();
         
         conn = Db.getInstance().conn;
         loadBarang();
@@ -64,7 +70,31 @@ public class LaporanPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelBarang = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelBM = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        groupBK = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelBK = new javax.swing.JTable();
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MousePressed(evt);
+            }
+        });
 
         jButton1.setText("CETAK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +131,7 @@ public class LaporanPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,14 +147,16 @@ public class LaporanPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(75);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(150);
+        tabelBarang.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(tabelBarang);
+        tabelBarang.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tabelBarang.getColumnModel().getColumnCount() > 0) {
+            tabelBarang.getColumnModel().getColumn(0).setMaxWidth(50);
+            tabelBarang.getColumnModel().getColumn(1).setMaxWidth(50);
+            tabelBarang.getColumnModel().getColumn(4).setHeaderValue("Kategori");
+            tabelBarang.getColumnModel().getColumn(5).setMaxWidth(75);
+            tabelBarang.getColumnModel().getColumn(5).setHeaderValue("Jumlah");
+            tabelBarang.getColumnModel().getColumn(6).setMaxWidth(150);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -170,6 +202,210 @@ public class LaporanPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Barang", jPanel1);
 
+        jButton2.setText("CETAK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Supplier", "Tanggal" }));
+
+        jLabel2.setText("Grouping");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        tabelBM.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Select", "#", "Kode", "Supplier", "Tanggal", "Keterangan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabelBM);
+        tabelBM.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tabelBM.getColumnModel().getColumnCount() > 0) {
+            tabelBM.getColumnModel().getColumn(0).setMaxWidth(50);
+            tabelBM.getColumnModel().getColumn(1).setMaxWidth(50);
+            tabelBM.getColumnModel().getColumn(4).setMaxWidth(150);
+        }
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Barang Masuk", jPanel4);
+
+        jButton3.setText("CETAK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        groupBK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Gudang", "Tanggal" }));
+
+        jLabel3.setText("Grouping");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(groupBK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(groupBK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        tabelBK.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Select", "#", "Kode", "Gudang", "Tanggal", "Keterangan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabelBK);
+        tabelBK.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tabelBK.getColumnModel().getColumnCount() > 0) {
+            tabelBK.getColumnModel().getColumn(0).setMaxWidth(50);
+            tabelBK.getColumnModel().getColumn(1).setMaxWidth(50);
+            tabelBK.getColumnModel().getColumn(4).setMaxWidth(150);
+        }
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Barang Keluar", jPanel7);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,13 +420,16 @@ public class LaporanPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
+            String groupQuery = "";
             File jasperFile;
             switch ((String) jComboBox1.getSelectedItem()) {
                 case "Kategori":
                     jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangByKategori.jrxml");
+                    groupQuery = " ORDER BY `kategori`";
                     break;
                 case "Tanggal":
                     jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangByTanggal.jrxml");
+                    groupQuery = " ORDER BY `tanggal`";
                     break;
                 default:
                     jasperFile = new File("src/main/java/com/unindra/inventory/reports/barang.jrxml");
@@ -200,24 +439,25 @@ public class LaporanPanel extends javax.swing.JPanel {
             
             Map<String, Object> parameters = new HashMap<String, Object>();
             List<String> kodeList = new ArrayList<>();
-            for (int i=0; i<jTable1.getRowCount(); i++) {
-                if (!((boolean) jTable1.getValueAt(i, 0))){
-                    kodeList.add((String) jTable1.getValueAt(i, 2));
+            for (int i=0; i<tabelBarang.getRowCount(); i++) {
+                if (!((boolean) tabelBarang.getValueAt(i, 0))){
+                    kodeList.add((String) tabelBarang.getValueAt(i, 2));
                 }
             }
             
             if (kodeList.isEmpty()) {
-                parameters.put("whereClause", "true");
+                parameters.put("whereClause", "true" + groupQuery);
             } else {
                 StringBuilder whereQuery = new StringBuilder("kode_part NOT IN ( ");
                 for (int i=0; i<kodeList.size(); i++) {
                     if (i > 0){ whereQuery.append(","); }
                     whereQuery.append("'"+ kodeList.get(i) +"'");
                 }
-                whereQuery.append(" )");
+                whereQuery.append(" )" + groupQuery);
                 parameters.put("whereClause", whereQuery.toString());
             }
             
+            System.out.print(parameters.get("whereClause"));
             JasperPrint jp = JasperFillManager.fillReport(jasperReport, parameters, conn);
             JasperViewer.viewReport(jp, false);
         } catch(Exception e) {
@@ -226,24 +466,150 @@ public class LaporanPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {            
+            String groupQuery = "";
+            File jasperFile;
+            switch ((String) jComboBox2.getSelectedItem()) {
+                case "Supplier":
+                    jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangMasukBySupplier.jrxml");
+                    groupQuery = " ORDER BY `supplier`";
+                    break;
+                case "Tanggal":
+                    jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangMasukByTanggal.jrxml");
+                    groupQuery = " ORDER BY `tanggal`";
+                    break;
+                default:
+                    jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangMasuk.jrxml");
+            }
+            JasperDesign jasperDesign = JRXmlLoader.load(jasperFile);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            List<String> kodeList = new ArrayList<>();
+            for (int i=0; i<tabelBM.getRowCount(); i++) {
+                if (!((boolean) tabelBM.getValueAt(i, 0))){
+                    kodeList.add((String) tabelBM.getValueAt(i, 2));
+                }
+            }
+            
+            if (kodeList.isEmpty()) {
+                parameters.put("whereClause", "true" + groupQuery);
+            } else {
+                StringBuilder whereQuery = new StringBuilder("id_bm NOT IN ( ");
+                for (int i=0; i<kodeList.size(); i++) {
+                    if (i > 0){ whereQuery.append(","); }
+                    whereQuery.append("'"+ kodeList.get(i) +"'");
+                }
+                whereQuery.append(" )" + groupQuery);
+                parameters.put("whereClause", whereQuery.toString());
+            }
+            
+            System.out.print(parameters.get("whereClause"));
+            JasperPrint jp = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            JasperViewer.viewReport(jp, false);
+        } catch(Exception e) {
+            Logger.getLogger(LaporanPanel.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MousePressed
+        switch (jTabbedPane1.getSelectedIndex()) {
+            case 0:
+                loadBarang();
+                break;
+            case 1:
+                loadBM();
+                break;
+            case 2:
+                loadBK();
+                break;
+        }
+    }//GEN-LAST:event_jTabbedPane1MousePressed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {            
+            String groupQuery = "";
+            File jasperFile;
+            switch ((String) groupBK.getSelectedItem()) {
+                case "Gudang":
+                    jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangKeluarByGudang.jrxml");
+                    groupQuery = " ORDER BY `gudang`";
+                    break;
+                case "Tanggal":
+                    jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangKeluarByTanggal.jrxml");
+                    groupQuery = " ORDER BY `tanggal`";
+                    break;
+                default:
+                    jasperFile = new File("src/main/java/com/unindra/inventory/reports/barangKeluar.jrxml");
+            }
+            JasperDesign jasperDesign = JRXmlLoader.load(jasperFile);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            List<String> kodeList = new ArrayList<>();
+            for (int i=0; i<tabelBK.getRowCount(); i++) {
+                if (!((boolean) tabelBK.getValueAt(i, 0))){
+                    kodeList.add((String) tabelBK.getValueAt(i, 2));
+                }
+            }
+            
+            if (kodeList.isEmpty()) {
+                parameters.put("whereClause", "true" + groupQuery);
+            } else {
+                StringBuilder whereQuery = new StringBuilder("id_bk NOT IN ( ");
+                for (int i=0; i<kodeList.size(); i++) {
+                    if (i > 0){ whereQuery.append(","); }
+                    whereQuery.append("'"+ kodeList.get(i) +"'");
+                }
+                whereQuery.append(" )" + groupQuery);
+                parameters.put("whereClause", whereQuery.toString());
+            }
+            
+            System.out.print(parameters.get("whereClause"));
+            JasperPrint jp = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            JasperViewer.viewReport(jp, false);
+        } catch(Exception e) {
+            Logger.getLogger(LaporanPanel.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> groupBK;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelBK;
+    private javax.swing.JTable tabelBM;
+    private javax.swing.JTable tabelBarang;
     // End of variables declaration//GEN-END:variables
 
     private void loadBarang() {
-//        Object[] header = {"#", "Kode", "Nama", "Kategori", "Jumlah", "Keterangan"};
-//        DefaultTableModel model = new DefaultTableModel(null, header);
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabelBarang.getModel();
         
         try {
             ResultSet data = barang.fetchAll();
@@ -261,7 +627,49 @@ public class LaporanPanel extends javax.swing.JPanel {
                 model.addRow(datum);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataMasterPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LaporanPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadBM() {
+        DefaultTableModel model = (DefaultTableModel) tabelBM.getModel();
+        
+        try {
+            ResultSet data = barangMasuk.fetchAll();
+            model.setRowCount(0);
+            int i = 0;
+            while (data.next()){
+                String kode_part = data.getString("id_bm");
+                String supplier_part = data.getString("supplier");
+                String tanggal_part = data.getString("tanggal");
+                String keterangan_part = data.getString("keterangan");
+                Object[] datum = {true, ++i, kode_part, 
+                    supplier_part, tanggal_part, keterangan_part};
+                model.addRow(datum);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LaporanPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadBK() {
+        DefaultTableModel model = (DefaultTableModel) tabelBK.getModel();
+        
+        try {
+            ResultSet data = barangKeluar.fetchAll();
+            model.setRowCount(0);
+            int i = 0;
+            while (data.next()){
+                String kode_part = data.getString("id_bk");
+                String gudang_part = data.getString("gudang");
+                String tanggal_part = data.getString("tanggal");
+                String keterangan_part = data.getString("keterangan");
+                Object[] datum = {true, ++i, kode_part, 
+                    gudang_part, tanggal_part, keterangan_part};
+                model.addRow(datum);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LaporanPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
