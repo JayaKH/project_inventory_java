@@ -122,6 +122,8 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
         jLabel32 = new javax.swing.JLabel();
         keteranganDBK = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(60, 91, 111));
+
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
@@ -132,6 +134,8 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
                 jTabbedPane1KeyPressed(evt);
             }
         });
+
+        jPanel6.setBackground(new java.awt.Color(60, 91, 111));
 
         detailBarangMasukTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,13 +201,19 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel19.setText("jLabel1");
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel19.setText("KODE");
 
-        jLabel20.setText("jLabel1");
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel20.setText("SUPPLIER");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel21.setText("jLabel1");
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel21.setText("KETERANGAN");
 
         simpanPemasok2.setText("Simpan");
         simpanPemasok2.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +243,11 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel25.setText("jLabel1");
+        jPanel1.setBackground(new java.awt.Color(60, 91, 111));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel25.setText("KODE DETAIL");
 
         kodeDBM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,13 +255,19 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel24.setText("jLabel1");
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel24.setText("BARANG");
 
         barangDBM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel23.setText("jLabel1");
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel23.setText("JUMLAH");
 
-        jLabel22.setText("jLabel1");
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel22.setText("KETERANGAN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -384,6 +404,8 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Barang Masuk", jPanel6);
 
+        jPanel2.setBackground(new java.awt.Color(60, 91, 111));
+
         detailBarangKeluarTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -448,13 +470,19 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel26.setText("jLabel1");
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel26.setText("KODE");
 
-        jLabel27.setText("jLabel1");
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel27.setText("GUDANG");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel28.setText("jLabel1");
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel28.setText("KETERANGAN");
 
         simpanPemasok4.setText("Simpan");
         simpanPemasok4.addActionListener(new java.awt.event.ActionListener() {
@@ -484,7 +512,12 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel29.setText("jLabel1");
+        jPanel3.setBackground(new java.awt.Color(60, 91, 111));
+        jPanel3.setToolTipText("");
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel29.setText("KODE DETAIL");
 
         kodeDBK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,13 +525,19 @@ public class DataTransaksiPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel30.setText("jLabel1");
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel30.setText("BARANG");
 
         barangDBK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel31.setText("jLabel1");
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel31.setText("JUMLAH");
 
-        jLabel32.setText("jLabel1");
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel32.setText("KETERANGAN");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

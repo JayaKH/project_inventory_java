@@ -108,11 +108,17 @@ public class LaporanPanel extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         tabelDBK = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(60, 91, 111));
+
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MousePressed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(60, 91, 111));
+
+        jPanel2.setBackground(new java.awt.Color(60, 91, 111));
 
         jButton1.setText("CETAK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -220,6 +226,10 @@ public class LaporanPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Barang", jPanel1);
 
+        jPanel4.setBackground(new java.awt.Color(60, 91, 111));
+
+        jPanel5.setBackground(new java.awt.Color(60, 91, 111));
+
         jButton2.setText("CETAK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,6 +331,10 @@ public class LaporanPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Barang Masuk", jPanel4);
+
+        jPanel7.setBackground(new java.awt.Color(60, 91, 111));
+
+        jPanel8.setBackground(new java.awt.Color(60, 91, 111));
 
         jButton3.setText("CETAK");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -424,6 +438,10 @@ public class LaporanPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Barang Keluar", jPanel7);
 
+        jPanel10.setBackground(new java.awt.Color(60, 91, 111));
+
+        jPanel11.setBackground(new java.awt.Color(60, 91, 111));
+
         jButton4.setText("CETAK");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -526,6 +544,10 @@ public class LaporanPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Detail Barang Masuk", jPanel10);
+
+        jPanel13.setBackground(new java.awt.Color(60, 91, 111));
+
+        jPanel14.setBackground(new java.awt.Color(60, 91, 111));
 
         jButton5.setText("CETAK");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
